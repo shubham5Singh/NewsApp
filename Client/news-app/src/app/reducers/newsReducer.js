@@ -7,7 +7,6 @@ const newsReducer = (state = {
 				...state,
 				articles: action.payload
 			};
-			console.log(action.payload + 'payload');
 			break;
 
 		default:

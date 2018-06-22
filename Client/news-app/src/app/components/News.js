@@ -11,7 +11,7 @@ export const News = (props) => {
 			</div>
 			<div className="row">
 				<div className="col-sm-12">
-					<div>{props.posts.map(function (post, index) {
+					<div>{props.posts.map((post, index) => {
 						if (post.description && post.urlToImage) {
 							return (
 								<div className="row post" key={index}>
@@ -32,6 +32,7 @@ export const News = (props) => {
 								</div>
 							)
 						}
+						return <div>No data avialble now</div>
 					})}
 					</div>
 				</div>

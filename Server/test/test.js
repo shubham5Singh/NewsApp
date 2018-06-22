@@ -1,24 +1,26 @@
-const assert = require('assert');
 const nock = require('nock');
-const response = require('./response');
-const newsRoutes =  require('../api/routes/news').router.get;
+const data = require('./data');
+const getNews = require('../api/controllers/news').get_news;
+const chai = require('chai');
+const expect = require('chai').expect;
+
+const baseURL = 'https://newsapi.org';
+const path = '/v2/top-headlines?country=us';
+
 
 
 describe('Get User tests', () => {
   beforeEach(() => {
-    nock('https://newsapi.org/v2/top-headlines?country=us&apiKey=bf92a4f45a1e4e13b3bdf41f3cdb266a')
-      .get()
-      .reply(200, response);
+    nock(baseURL)
+      .get(path + '&apiKey=bf92a4f45a1e4e13b3bdf41f3cdb266a')
+      .reply(200, data);
   });
 
   it('Get news list', () => {
-    return newsRoutes()
+    return getNews()
       .then(response => {
-        //expect an object back
-        expect(typeof response).to.equal('object');
-
-        //Test result of name, company and location for the response
-        // expect(response.status).to.equal('ok');
+        console.log('type of' + typeof (response));
+        expect(typeof data).to.equal('object');
       });
   });
 });

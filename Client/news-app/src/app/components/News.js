@@ -32,7 +32,9 @@ export const News = (props) => {
 								</div>
 							)
 						}
-						return <div>No data avialble now</div>
+						return(
+							<div key={index}>No data avialble now</div>
+						); 
 					})}
 					</div>
 				</div>
